@@ -405,7 +405,7 @@ unsigned char *lpNext(unsigned char *lp, unsigned char *p) {
 }
 
 /* If 'p' points to an element of the listpack, calling lpPrev() will return
- * the pointer to the preivous element (the one on the left), or NULL if 'p'
+ * the pointer to the previous element (the one on the left), or NULL if 'p'
  * already pointed to the first element of the listpack. */
 unsigned char *lpPrev(unsigned char *lp, unsigned char *p) {
     if (p-lp == LP_HDR_SIZE) return NULL;
@@ -773,13 +773,13 @@ unsigned char *lpSeek(unsigned char *lp, long index) {
          * is past the half of the listpack. */
         if (index > numele/2) {
             forward = 0;
-            /* Left to right scanning always expects a negative index. Convert
+            /* Right to left scanning always expects a negative index. Convert
              * our index to negative form. */
             index -= numele;
         }
     } else {
         /* If the listpack length is unspecified, for negative indexes we
-         * want to always scan left-to-right. */
+         * want to always scan right-to-left. */
         if (index < 0) forward = 0;
     }
 
